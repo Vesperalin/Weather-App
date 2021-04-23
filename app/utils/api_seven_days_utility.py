@@ -6,9 +6,13 @@ import api_key
 
 
 class ApiSevenDaysUtility:
+    """
+        class used to connect and get data in json format from weather API
+        uses my private api key, which is saved in api_key file
+    """
     API_CALL = 'http://api.openweathermap.org/data/2.5/forecast/daily?'
     DAYS_AMOUNT = '&cnt=5'
-    API_KEY = '&appid=' + api_key.API_KEY
+    API_KEY = '&appid=' + api_key.PRIVATE_API_KEY
 
     def __init__(self):
         pass
