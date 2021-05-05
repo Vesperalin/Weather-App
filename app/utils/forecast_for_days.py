@@ -11,18 +11,18 @@ class ForecastForDays:
     """
         Class used to get and store information about weather for days
         Attributes:
-            __api_utility -- reference to WeatherApiUtilityForDays instance
+            __api_utility -- reference to WeatherApiUtility instance
             __weather_forecasts_for_days -- list of WeatherForDay instances
-            __city_name -- name of the city for which the forecast is, type str
+            __city_name -- name of the city for which is the forecast, type str
             __country_short -- short name of country where the city is, type str
             __amount_of_days -- amount of days, for which forecast is wanted, type int
         Methods:
-            get_data_for_city(self, city_name) -- parameter is a city name for which the forecast is, returns None
+            get_data_for_city(self, city_name) -- parameter is a city name for which is the forecast, returns None
                 Method gets information about weather from api, and processes, to fill __weather_forecasts_for_days
     """
 
     def __init__(self, amount_of_days):  # amount_of_days is int type
-        self.__api_utility = weather_utility.WeatherApiUtilityForDays(amount_of_days)
+        self.__api_utility = weather_utility.WeatherApiUtility(amount_of_days)
         self.__weather_forecasts_for_days = []
         self.__city_name = ""
         self.__country_short = ""
@@ -30,10 +30,12 @@ class ForecastForDays:
 
     def get_data_for_city(self, city_name):
         self.__weather_forecasts_for_days.clear()  # clears the list after previous search
-        data = self.__api_utility.get_data(city_name)
+        self.__city_name = ""
+        self.__country_short = ""
+        data = self.__api_utility.get_data_for_days(city_name)
 
         if isinstance(data, int):
-            raise api_error.ApiError(data)
+            raise api_error.ApiError(data)  # raises the error with request error code
         else:
             self.__city_name = data["city"]["name"]  # type str
             self.__country_short = data["city"]["country"]  # type str
@@ -42,8 +44,9 @@ class ForecastForDays:
                 self.__weather_forecasts_for_days.append(weather_for_day.WeatherForDay(data["list"][i],
                                                                                        data["city"]["timezone"]))
             # TODO - delete - for tests
-            # for day in self.__weather_forecasts_for_days:
+            for day in self.__weather_forecasts_for_days:
                 # print(day)
+                print(day.wind_speed_in_ms)
 
             # return data
             return None

@@ -5,7 +5,7 @@ import json
 import api_key
 
 
-class WeatherApiUtilityForDays:
+class WeatherApiUtility:
     """
         Class used to connect and get data in json format from weather API.
         Uses my private api key, which is saved in api_key file (ignored in .gitignore)
@@ -25,7 +25,7 @@ class WeatherApiUtilityForDays:
     def __init__(self, amount_of_days):
         self.__days_amount = self.__DAYS_AMOUNT_INFIX + str(amount_of_days)
 
-    def get_data(self, city_name):
+    def get_data_for_days(self, city_name):
         response = requests.get(f'{self.__API_CALL}{city_name}{self.__days_amount}{self.__API_KEY}')
         if response.status_code == 200:
             return response.json()
@@ -35,8 +35,8 @@ class WeatherApiUtilityForDays:
 
 if __name__ == '__main__':
     # TODO - delete
-    n = WeatherApiUtilityForDays(5)
-    d = n.get_data('Leszno')
+    n = WeatherApiUtility(5)
+    d = n.get_data_for_days('Leszno')
     # print(json.dumps(d, indent=4))
     if d == 400:
         print(400)
