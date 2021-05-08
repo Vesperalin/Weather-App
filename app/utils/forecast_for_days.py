@@ -46,7 +46,7 @@ class ForecastForDays:
             # TODO - delete - for tests
             for day in self.__weather_forecasts_for_days:
                 # print(day)
-                print(day.wind_speed_in_ms)
+                print(day.date)
 
             # return data
             return None

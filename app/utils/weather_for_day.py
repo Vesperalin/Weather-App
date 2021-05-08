@@ -30,9 +30,10 @@ class WeatherForDay:
             __humidity -- humidity in %, type int
             __cloudiness -- cloudiness in %, type int
             __wind_speed -- wind speed, by default in m/s, type real
+            __wind_direction -- by default in degrees (meteorological), type int
             __weather_description -- short (1/3 words) description of the weather, type str
             __icon_code -- code of the weather icon, type str
-            __wind_direction -- by default in degrees (meteorological), type int
+            __weather_condition_id -- id of weather condition, type int
             
         Properties:
             date -- returns date in format DD.MM.YYYY, type str
@@ -58,10 +59,11 @@ class WeatherForDay:
             wind_speed_in_mph -- returns wind speed in mph (miles per hour), with mph sign
             wind_speed_in_kmh -- returns wind speed in km/h (kilometers per hour), with km/h sign
             wind_speed_in_knots -- returns wind speed in kn (knots), with kn sign
+            wind_direction -- converts meteorological degrees to cardinal directions (of wind), type str
             weather_description -- short (1/3 words) description of the weather, type str
             icon_code -- code of the weather icon, type str
-            wind_direction -- converts meteorological degrees to cardinal directions (of wind), type str
-
+            weather_condition_id -- id of weather condition, type str
+            
         Methods:
             __convert_to_celsius -- converts Kelvins to Celsius, type int
             __convert_to_fahrenheit -- converts Kelvins to Fahrenheit, type int
@@ -91,10 +93,11 @@ class WeatherForDay:
 
         self.__weather_description = data_for_day["weather"][0]["description"]
         self.__icon_code = data_for_day["weather"][0]["icon"]
+        self.__weather_condition_id = data_for_day["weather"][0]["id"]
 
     @property
     def date(self):
-        date = datetime.datetime.utcfromtimestamp(self.__date).__str__()
+        date = datetime.datetime.utcfromtimestamp(self.__date + self.__timezone_shift).__str__()
         date = date.split(" ")[0].split("-")
         date = f'{date[2]}.{date[1]}.{date[0]}'
         return date
@@ -254,7 +257,11 @@ class WeatherForDay:
 
     @property
     def icon_code(self):
-        return self.__icon_code
+        return str(self.__icon_code)
+
+    @property
+    def weather_condition_id(self):
+        return self.__weather_condition_id
 
     def __convert_to_celsius(self, temp):
         return round(temp - 273.15)
