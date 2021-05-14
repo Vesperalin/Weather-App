@@ -5,7 +5,6 @@ import api_error
 import weather_for_day
 
 
-# TODO - think to transform class to separate methods
 # TODO - add docs
 class ForecastForDays:
     """
@@ -54,7 +53,7 @@ class ForecastForDays:
 
 if __name__ == '__main__':
     # TODO - delete
-    n = ForecastForDays(5)
+    n = ForecastForDays(7)
     try:
         d = n.get_data_for_city('Leszno')
         # print(d["list"][0])

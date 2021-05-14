@@ -35,7 +35,7 @@ class WeatherApiUtility:
 
 if __name__ == '__main__':
     # TODO - delete
-    n = WeatherApiUtility(5)
+    n = WeatherApiUtility(7)
     d = n.get_data_for_days('Leszno')
     # print(json.dumps(d, indent=4))
     if d == 400:
