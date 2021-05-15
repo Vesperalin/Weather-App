@@ -1,8 +1,6 @@
-import json
-
-import weather_api_utility_for_days as weather_utility
-import api_error
-import weather_for_day
+import app.utils.weather_api_utility_for_days as weather_utility
+import app.utils.api_error as api_error
+import app.utils.weather_for_day as weather_for_day
 
 
 # TODO - add docs
@@ -45,7 +43,8 @@ class ForecastForDays:
             # TODO - delete - for tests
             for day in self.__weather_forecasts_for_days:
                 # print(day)
-                print(day.date)
+                # print(day.date)
+                pass
 
             # return data
             return None

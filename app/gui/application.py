@@ -1,7 +1,8 @@
 import tkinter as tk
 
 
-from main_frame import MainFrame
+import main_frame
+
 
 if __name__ == '__main__':
     root = tk.Tk()
@@ -9,5 +10,5 @@ if __name__ == '__main__':
     root.minsize(500, 300)
     root.geometry('700x433')
     root.config(background='#6BC0EE')
-    app = MainFrame(master=root)
+    app = main_frame.MainFrame(master=root)
     app.mainloop()

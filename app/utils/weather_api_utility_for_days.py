@@ -2,7 +2,7 @@ import requests
 import json
 
 
-import api_key
+import app.utils.api_key as api_key
 
 
 class WeatherApiUtility:
@@ -15,7 +15,7 @@ class WeatherApiUtility:
             get_data(self, city_name) -- parameter is a city name of string type, returns json with information
                 about weather or code of error if getting data from api didn't succeed
 
-        Info: Made it as a class, not separate methods, because it may help with developing app in the future
+        Info: Made it as a class, not separate methods, because it may help with developing app- in the future
     """
 
     __API_CALL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
