@@ -1,8 +1,7 @@
 import datetime
 
 
-# TODO - add docs
-# TODO - fields values like in json, wanted format via properties (as strings)
+# TODO - add docs for statics
 class WeatherForDay:
     CELSIUS_SIGN = u'\u2103'
     KELVIN_SIGN = 'K'
@@ -262,6 +261,10 @@ class WeatherForDay:
     @property
     def weather_condition_id(self):
         return self.__weather_condition_id
+
+    @property
+    def weather_description(self):
+        return self.__weather_description
 
     def __convert_to_celsius(self, temp):
         return round(temp - 273.15)

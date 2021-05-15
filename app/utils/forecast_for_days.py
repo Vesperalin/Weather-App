@@ -3,7 +3,7 @@ import app.utils.api_error as api_error
 import app.utils.weather_for_day as weather_for_day
 
 
-# TODO - add docs
+# TODO - add docs for properties
 class ForecastForDays:
     """
         Class used to get and store information about weather for days
@@ -48,6 +48,26 @@ class ForecastForDays:
 
             # return data
             return None
+
+    @property
+    def weather_forecasts_for_days(self):
+        return self.__weather_forecasts_for_days
+
+    @property
+    def city_name(self):
+        return self.__city_name
+
+    @property
+    def country_short(self):
+        return self.__country_short
+
+    @property
+    def amount_of_days(self):
+        return self.__amount_of_days
+
+    @property
+    def weather_forecasts_for_days(self):
+        return self.__weather_forecasts_for_days
 
 
 if __name__ == '__main__':

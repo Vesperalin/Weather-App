@@ -1,18 +1,40 @@
 import tkinter as tk
 
 
-class WeatherFrame(tk.Toplevel):
-    def __init__(self, parent, city_name, temp_sign, wind_sign, weather_conditions):
-        super().__init__(parent)
+import weather_frame_for_day
+
+
+# TODO - add docs
+class WeatherWindow(tk.Toplevel):
+    def __init__(self, parent, temp_sign, wind_sign, weather_conditions):
+        super().__init__(parent, bg='#6BC0EE')
+        self.minsize(1230, 400)
+
+        # values
         self.__parent = parent
-        self.__city_name = city_name
         self.__temp_sign = temp_sign
         self.__wind_sign = wind_sign
         self.__weather_conditions = weather_conditions
+        self.__weather_data_frames = []
 
-        # main frame of the window
-        self.__frame = tk.Frame(self)
+        # frames for components
+        self.__frame = tk.Frame(self, bg='#6BC0EE')
         self.__frame.pack()
 
-        label = tk.Label(self.__frame, text=self.__city_name)
-        label.pack()
+        self.__city_name_frame = tk.Frame(self.__frame, bg='#6BC0EE')
+        self.__city_name_frame.grid(row=0, column=0, columnspan=self.__weather_conditions.amount_of_days, sticky='w',
+                                    pady=(10, 20), padx=(30, 0))
+
+        # init city label in frame
+        self.__city_label = tk.Label(self.__city_name_frame, text=f'{self.__weather_conditions.city_name}, '
+                                                                  f'{self.__weather_conditions.country_short}',
+                                     bg='#6BC0EE', fg='white', font=("Microsoft YaHei", 38))
+        self.__city_label.pack()
+
+        for i in range(0, self.__weather_conditions.amount_of_days):
+            frame = weather_frame_for_day.WeatherFrameForDay(i, self.__weather_conditions.weather_forecasts_for_days[i],
+                                                             self.__weather_conditions.city_name,
+                                                             self.__weather_conditions.country_short, self.__temp_sign,
+                                                             self.__wind_sign, self.__frame)
+            self.__weather_data_frames.append(frame)
+
