@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-import weather_frame_for_day
+import app.gui.weather_frame_for_day as weather_frame_for_day
 
 
 # TODO - add docs

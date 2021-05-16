@@ -2,7 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 
-import weather_details_window as details
+import app.gui.weather_details_window as details
 
 
 # TODO - add docs

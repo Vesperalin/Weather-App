@@ -4,7 +4,7 @@ from tkinter import messagebox as msb
 
 import app.utils.forecast_for_days as forecast
 import app.utils.api_error as error
-import weather_window
+import app.gui.weather_window as weather_window
 
 
 DEFAULT_AMOUNT_OF_DAYS = 7

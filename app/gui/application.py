@@ -1,10 +1,10 @@
 import tkinter as tk
 
 
-import main_frame
+import app.gui.main_frame as main_frame
 
 
-if __name__ == '__main__':
+def main():
     root = tk.Tk()
     root.title("Weather Forecast")
     root.minsize(500, 300)
@@ -12,3 +12,7 @@ if __name__ == '__main__':
     root.config(background='#6BC0EE')
     app = main_frame.MainFrame(master=root)
     app.mainloop()
+
+
+if __name__ == '__main__':
+    pass
