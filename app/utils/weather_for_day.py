@@ -1,39 +1,37 @@
 import datetime
 
 
-# TODO - add docs for statics
 class WeatherForDay:
-    CELSIUS_SIGN = u'\u2103'
-    KELVIN_SIGN = 'K'
-    FAHRENHEIT_SIGN = u'\u2109'
-    PRESSURE_SIGN = 'hPa'
-    PERCENTAGE_SIGN = '%'
-    METERS_PER_SECOND_SIGN = 'm/s'
-    MILES_PER_HOUR_SIGN = 'mph'
-    KILOMETERS_PER_HOUR_SIGN = 'km/h'
-    KNOTS_SIGN = 'kn'
-    CARDINAL_DIRECTION = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
-
     """
-        Class stores, converts and represents weather conditions on a specific day
+        Class stores, converts and represents weather conditions for a specific day
+
+        Static variables:
+            CELSIUS_SIGN -- sign for temperature in celsiuses, type str
+            KELVIN_SIGN -- sign for temperature in kelvins, type str
+            FAHRENHEIT_SIGN -- sign for temperature in fahrenheits, type str
+            PRESSURE_SIGN -- sign for pressure, type str
+            PERCENTAGE_SIGN -- %, type str
+            METERS_PER_SECOND_SIGN -- sign for wind speed in meters per second, type str
+            MILES_PER_HOUR_SIGN -- sign for wind speed in miles per hour, type str
+            KILOMETERS_PER_HOUR_SIGN -- sign for wind speed in kilometers per hour, type str
+            KNOTS_SIGN -- sign for wind speed in knots, type str
+            CARDINAL_DIRECTION -- signs for wind direction, type str
         Attributes:
-            __date -- timestamp in UTC, type int
+             __date -- timestamp in UTC, type int
             __timezone_shift -- shift in seconds from UTC, type int
             __sunrise -- sunrise time, timestamp in UTC, type int
             __sunset -- sunset time, timestamp in UTC, type int
             __temp_day -- temperature during the day, by default temp is in Kelvins, type real
-            (same for: __temp_morn, __temp_eve, __temp_night)
+                (same for: __temp_morn, __temp_eve, __temp_night)
             __temp_feels_like_day -- temperature during the day, feels like, by default temp is in Kelvins, type real
-            (same for: __temp_feels_like_morn, __temp_feels_like_eve, __temp_feels_like_night)
-            __pressure -- pressure, by default in hPa, type int
-            __humidity -- humidity in %, type int
+                (same for: __temp_feels_like_morn, __temp_feels_like_eve, __temp_feels_like_night)
+             __pressure -- pressure, by default in hPa, type int
+             __humidity -- humidity in %, type int
             __cloudiness -- cloudiness in %, type int
             __wind_speed -- wind speed, by default in m/s, type real
-            __wind_direction -- by default in degrees (meteorological), type int
+             __wind_direction -- by default in degrees (meteorological), type int
             __weather_description -- short (1/3 words) description of the weather, type str
             __icon_code -- code of the weather icon, type str
-            __weather_condition_id -- id of weather condition, type int
-            
         Properties:
             date -- returns date in format DD.MM.YYYY, type str
             day_name -- returns day name, type str
@@ -41,15 +39,15 @@ class WeatherForDay:
             sunset -- returns time of sunset in format HH:MM, type str
             temperature_for_day_in_kelvins -- returns temperature for the day in Kelvins, type str, with Kelvin sign
             temperature_for_day_in_celsius -- returns temperature for the day in Celsius, type str, with Celsius sign
-            temperature_for_day_in_fahrenheit -- returns temperature for the day in Fahrenheit, type str, 
+            temperature_for_day_in_fahrenheit -- returns temperature for the day in Fahrenheit, type str,
                                                                                                     with fahrenheit sign
             (same for: __temp_morn, __temp_eve, __temp_night)
-            temperature_feels_like_for_day_in_kelvins -- returns temperature for the day, feels like, 
-                                                                                  in Kelvins, type str, with Kelvin sign
-            temperature_feels_like_for_day_in_celsius -- returns temperature for the day, feels like, 
-                                                                                 in Celsius, type str, with Celsius sign
-            temperature_feels_like_for_day_in_fahrenheit -- returns temperature for the day, feels like, 
-                                                                           in Fahrenheit, type str, with fahrenheit sign
+            temperature_feels_like_for_day_in_kelvins -- returns temperature for the day, feels like,
+                                                                                in Kelvins, type str, with Kelvin sign
+            temperature_feels_like_for_day_in_celsius -- returns temperature for the day, feels like,
+                                                                                in Celsius, type str, with Celsius sign
+            temperature_feels_like_for_day_in_fahrenheit -- returns temperature for the day, feels like,
+                                                                        in Fahrenheit, type str, with fahrenheit sign
             (same for: __temp_feels_like_morn, __temp_feels_like_eve, __temp_feels_like_night)
             pressure -- returns pressure in hPa, type str, with pressure sign
             humidity -- returns humidity, in %, type str, with percentage sign
@@ -61,12 +59,22 @@ class WeatherForDay:
             wind_direction -- converts meteorological degrees to cardinal directions (of wind), type str
             weather_description -- short (1/3 words) description of the weather, type str
             icon_code -- code of the weather icon, type str
-            weather_condition_id -- id of weather condition, type str
-            
         Methods:
             __convert_to_celsius -- converts Kelvins to Celsius, type int
             __convert_to_fahrenheit -- converts Kelvins to Fahrenheit, type int
     """
+
+    CELSIUS_SIGN = u'\u2103'
+    KELVIN_SIGN = 'K'
+    FAHRENHEIT_SIGN = u'\u2109'
+    PRESSURE_SIGN = 'hPa'
+    PERCENTAGE_SIGN = '%'
+    METERS_PER_SECOND_SIGN = 'm/s'
+    MILES_PER_HOUR_SIGN = 'mph'
+    KILOMETERS_PER_HOUR_SIGN = 'km/h'
+    KNOTS_SIGN = 'kn'
+    CARDINAL_DIRECTION = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW",
+                          "NNW"]
 
     def __init__(self, data_for_day, timezone_shift):
         self.__date = data_for_day["dt"]
@@ -92,7 +100,6 @@ class WeatherForDay:
 
         self.__weather_description = data_for_day["weather"][0]["description"]
         self.__icon_code = data_for_day["weather"][0]["icon"]
-        self.__weather_condition_id = data_for_day["weather"][0]["id"]
 
     @property
     def date(self):
@@ -259,10 +266,6 @@ class WeatherForDay:
         return str(self.__icon_code)
 
     @property
-    def weather_condition_id(self):
-        return self.__weather_condition_id
-
-    @property
     def weather_description(self):
         return self.__weather_description
 
@@ -271,12 +274,3 @@ class WeatherForDay:
 
     def __convert_to_fahrenheit(self, temp):
         return round((1.8 * (temp - 273)) + 32)
-
-    # TODO - delete - temp, for tests
-    def __str__(self):
-        return str(self.__date) + " " + str(self.__timezone_shift) + " " + str(self.__sunrise) + " " + str(self.__sunset) + " " + \
-               str(self.__temp_day) + " " + str(self.__temp_morn) + " " + str(self.__temp_eve) + " " + str(self.__temp_night) + " " + \
-               str(self.__temp_feels_like_day) + " " + str(self.__temp_feels_like_morn) + " " + str(self.__temp_feels_like_eve) + \
-               " " + str(self.__temp_feels_like_night) + " " + str(self.__pressure) + " " + str(self.__humidity) + " " + \
-               str(self.__wind_speed) + " " + str(self.__wind_direction) + str(self.__cloudiness) + " " + self.__weather_description + \
-               " " + self.__icon_code

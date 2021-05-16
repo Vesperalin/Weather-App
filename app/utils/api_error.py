@@ -1,6 +1,7 @@
 class ApiError(Exception):
     """
         Exception for errors with api, getting data from api
+
         Attributes:
             error_code -- code of error, type int
         Methods:

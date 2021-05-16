@@ -1,5 +1,4 @@
 import requests
-import json
 
 
 import app.utils.api_key as api_key
@@ -9,13 +8,16 @@ class WeatherApiUtility:
     """
         Class used to connect and get data in json format from weather API.
         Uses my private api key, which is saved in api_key file (ignored in .gitignore)
+
+        Static variables:
+            __API_CALL -- main part of url, type str
+            __DAYS_AMOUNT_INFIX -- infix with amount of days (days of weather forecast), type str
+            __API_KEY -- private api key form api_key file, type str
         Attributes:
             __days_amount -- infix for api call, amount of days of forecast, type str
         Methods:
             get_data(self, city_name) -- parameter is a city name of string type, returns json with information
                 about weather or code of error if getting data from api didn't succeed
-
-        Info: Made it as a class, not separate methods, because it may help with developing app- in the future
     """
 
     __API_CALL = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
@@ -30,15 +32,4 @@ class WeatherApiUtility:
         if response.status_code == 200:
             return response.json()
         else:
-            return response.status_code  # value is a type of int
-
-
-if __name__ == '__main__':
-    # TODO - delete
-    n = WeatherApiUtility(7)
-    d = n.get_data_for_days('Leszno')
-    # print(json.dumps(d, indent=4))
-    if d == 400:
-        print(400)
-    else:
-        print(json.dumps(d, indent=4))
+            return response.status_code  # is a type of int
