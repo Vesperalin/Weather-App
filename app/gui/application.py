@@ -3,6 +3,10 @@ import tkinter as tk
 
 import app.gui.main_frame as main_frame
 
+"""
+    Creates the root for the gui
+"""
+
 
 def main():
     root = tk.Tk()
@@ -10,9 +14,7 @@ def main():
     root.minsize(500, 300)
     root.geometry('700x433')
     root.config(background='#6BC0EE')
+    icon = tk.PhotoImage(file='img\icon.png')
+    root.iconphoto(False, icon)
     app = main_frame.MainFrame(master=root)
     app.mainloop()
-
-
-if __name__ == '__main__':
-    pass
