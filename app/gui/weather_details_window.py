@@ -118,7 +118,7 @@ class WeatherDetailsWindow(tk.Toplevel):
 
     def __init_sunrise_sunset(self):
         self.__sunrise_sunset_label = tk.Label(self.__sunrise_sunset_frame,
-                                               text=f'Sunrise: {self.__weather_for_day.sunrise} \t Sunrise: '
+                                               text=f'Sunrise: {self.__weather_for_day.sunrise} \t Sunset: '
                                                     f'{self.__weather_for_day.sunset}',
                                                bg=BACKGROUND_COLOUR, fg=TEXT_COLOUR, font=(FONT, 14))
         self.__sunrise_sunset_label.pack()
