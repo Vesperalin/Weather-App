@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox as msb
+import requests
 
 
 import app.utils.forecast_for_days as forecast
@@ -96,6 +97,8 @@ class MainFrame(tk.Frame):
             forecast_for_city = forecast.ForecastForDays(DEFAULT_AMOUNT_OF_DAYS)
             forecast_for_city.get_data_for_city(city_name)
             weather_toplevel_window = weather_window.WeatherWindow(self, temp_sign, wind_sign, forecast_for_city)
+        except requests.ConnectionError:
+            msb.showerror('Internet error', 'You have no internet connection')
         except error.ApiError as err:
             if err.error_code == 401:
                 msb.showerror(f'{err.error_code} ERROR',
