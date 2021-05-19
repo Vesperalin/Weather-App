@@ -159,16 +159,24 @@ class MainFrame(tk.Frame):
     def __set_default_values_in_fields(self):
         try:
             default_values = self.__default_settings_manager.read_from_default_settings()
-            if None in default_values:
+            if default_values[2] is None:
                 self.__city_name.set("")
-                self.__chosen_temperature.set(self.TEMPERATURE_SYMBOLS[0])
-                self.__chosen_wind.set(self.WIND_SYMBOLS[0])
-                msb.showerror('ERROR', 'Problem occurred when reading default settings! '
-                                       'Please, check and correct your default settings')
             else:
                 self.__city_name.set(default_values[2])
+
+            if default_values[1] is None:
+                self.__chosen_temperature.set(self.TEMPERATURE_SYMBOLS[0])
+            else:
                 self.__chosen_temperature.set(default_values[1])
+
+            if default_values[0] is None:
+                self.__chosen_wind.set(self.WIND_SYMBOLS[0])
+            else:
                 self.__chosen_wind.set(default_values[0])
+
+            if None in default_values:
+                msb.showerror('ERROR', 'Problem occurred when reading default settings! '
+                                       'Please, check and correct your default settings')
         except IOError:
             self.__city_name.set("")
             self.__chosen_temperature.set(self.TEMPERATURE_SYMBOLS[0])
