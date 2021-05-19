@@ -1,4 +1,5 @@
 class ApiError(Exception):
+
     """
         Exception for errors with api, getting data from api
 

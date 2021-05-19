@@ -4,18 +4,18 @@ import tkinter as tk
 import app.gui.weather_frame_for_day as weather_frame_for_day
 
 
-BACKGROUND_COLOUR = '#6BC0EE'
-
-
 class WeatherWindow(tk.Toplevel):
+
     """
             Class contains WeatherFrameForDay frames
             This is a first top level window
     """
 
+    BACKGROUND_COLOUR = '#6BC0EE'
+
     def __init__(self, parent, temp_sign, wind_sign, weather_conditions):
         # init self
-        super().__init__(parent, bg=BACKGROUND_COLOUR)
+        super().__init__(parent, bg=self.BACKGROUND_COLOUR)
         icon = tk.PhotoImage(file='img\icon.png')
         self.iconphoto(False, icon)
         self.minsize(1230, 400)
@@ -24,18 +24,18 @@ class WeatherWindow(tk.Toplevel):
         self.__weather_data_frames = []
 
         # main frame in the window
-        self.__frame = tk.Frame(self, bg=BACKGROUND_COLOUR)
+        self.__frame = tk.Frame(self, bg=self.BACKGROUND_COLOUR)
         self.__frame.pack()
 
         # frames for components
-        self.__city_name_frame = tk.Frame(self.__frame, bg=BACKGROUND_COLOUR)
+        self.__city_name_frame = tk.Frame(self.__frame, bg=self.BACKGROUND_COLOUR)
         self.__city_name_frame.grid(row=0, column=0, columnspan=weather_conditions.amount_of_days, sticky='w',
                                     pady=(10, 20), padx=(30, 0))
 
         # init city label in its frame
         self.__city_label = tk.Label(self.__city_name_frame, text=f'{weather_conditions.city_name}, '
                                                                   f'{weather_conditions.country_short}',
-                                     bg=BACKGROUND_COLOUR, fg='white', font=("Microsoft YaHei", 38))
+                                     bg=self.BACKGROUND_COLOUR, fg='white', font=("Microsoft YaHei", 38))
         self.__city_label.pack()
 
         # init WeatherFrameForDay instances

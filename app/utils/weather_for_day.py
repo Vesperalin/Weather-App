@@ -2,6 +2,7 @@ import datetime
 
 
 class WeatherForDay:
+
     """
         Class stores, converts and represents weather conditions for a specific day
 

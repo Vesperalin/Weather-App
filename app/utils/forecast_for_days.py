@@ -4,6 +4,7 @@ import app.utils.weather_for_day as weather_for_day
 
 
 class ForecastForDays:
+
     """
         Class used to get and store information about weather for days
 

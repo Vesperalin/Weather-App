@@ -5,6 +5,7 @@ import app.utils.api_key as api_key
 
 
 class WeatherApiUtility:
+
     """
         Class used to connect and get data in json format from weather API.
         Uses my private api key, which is saved in api_key file (ignored in .gitignore)

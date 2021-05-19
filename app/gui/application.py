@@ -3,6 +3,7 @@ import tkinter as tk
 
 import app.gui.main_frame as main_frame
 
+
 """
     Creates the root for the gui
 """
@@ -11,7 +12,7 @@ import app.gui.main_frame as main_frame
 def main():
     root = tk.Tk()
     root.title("Weather Forecast")
-    root.minsize(500, 300)
+    root.minsize(500, 400)
     root.geometry('700x433')
     root.config(background='#6BC0EE')
     icon = tk.PhotoImage(file='img\icon.png')
