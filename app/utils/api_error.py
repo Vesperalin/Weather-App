@@ -5,7 +5,7 @@ class ApiError(Exception):
 
         Attributes:
             error_code -- code of error, type int
-        Methods:
+        Properties:
             error_code -- returns code of error, type int
     """
 

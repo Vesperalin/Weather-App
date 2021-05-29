@@ -5,7 +5,7 @@ import app.gui.main_frame as main_frame
 
 
 """
-    Creates the root for the gui
+    Creates the Tk for the gui
 """
 
 

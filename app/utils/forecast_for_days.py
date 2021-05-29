@@ -1,4 +1,4 @@
-import app.utils.weather_api_utility_for_days as weather_utility
+import app.utils.weather_api_utility as weather_utility
 import app.utils.api_error as api_error
 import app.utils.weather_for_day as weather_for_day
 

@@ -1,8 +1,9 @@
-import app.utils.weather_api_utility_for_days as util
+import app.utils.weather_api_utility as util
 import app.utils.api_error as api_error
 
 
 class DefaultSettingsManager:
+
     """
         Class used to get and set default settings in weather app: city name, temperature sign, wind sign
 

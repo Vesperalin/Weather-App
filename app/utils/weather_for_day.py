@@ -74,8 +74,8 @@ class WeatherForDay:
     MILES_PER_HOUR_SIGN = 'mph'
     KILOMETERS_PER_HOUR_SIGN = 'km/h'
     KNOTS_SIGN = 'kn'
-    CARDINAL_DIRECTION = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW",
-                          "NNW"]
+    CARDINAL_DIRECTIONS = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW",
+                           "NNW"]
 
     def __init__(self, data_for_day, timezone_shift):
         self.__date = data_for_day["dt"]
@@ -91,7 +91,7 @@ class WeatherForDay:
         self.__temp_feels_like_day = data_for_day["feels_like"]["day"]
         self.__temp_feels_like_morn = data_for_day["feels_like"]["morn"]
         self.__temp_feels_like_eve = data_for_day["feels_like"]["eve"]
-        self.__temp_feels_like_night = data_for_day["feels_like"]["eve"]
+        self.__temp_feels_like_night = data_for_day["feels_like"]["night"]
 
         self.__pressure = data_for_day["pressure"]
         self.__humidity = data_for_day["humidity"]
@@ -111,7 +111,7 @@ class WeatherForDay:
 
     @property
     def day_name(self):
-        date = datetime.datetime.utcfromtimestamp(self.__date)
+        date = datetime.datetime.utcfromtimestamp(self.__date + self.__timezone_shift)
         day = date.strftime("%A")
         return day
 
@@ -251,8 +251,8 @@ class WeatherForDay:
 
     @property
     def wind_direction(self):
-        i = round(self.__wind_direction / (360. / len(self.CARDINAL_DIRECTION)))
-        return self.CARDINAL_DIRECTION[i % len(self.CARDINAL_DIRECTION)]
+        i = round(self.__wind_direction / (360. / len(self.CARDINAL_DIRECTIONS)))
+        return self.CARDINAL_DIRECTIONS[i % len(self.CARDINAL_DIRECTIONS)]
 
     @property
     def cloudiness(self):
