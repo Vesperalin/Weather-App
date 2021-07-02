@@ -44,18 +44,26 @@ pip install requests
 
 ### Saving default values
 ![Main window2](screenshots/img2.png)
+
 After clicking 'Set as default' button
+
 ![Main window3](screenshots/img3.png)
 
 ### Display default values
+
 After clicking 'Show default' button
+
 ![Default values](screenshots/img4.png)
 
 ### Display weather forecast for given city
 ![Main window2](screenshots/img2.png)
+
 After clicking 'Search' button
+
 ![Weather window](screenshots/img5.png)
+
 After clicking 'more' button for chosen day
+
 ![Weather details window](screenshots/img6.png)
 
 ### Display weather forecast for two cities
